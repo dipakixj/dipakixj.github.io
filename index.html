@@ -1,1 +1,383 @@
-Hello World
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Seedr.cc – Cloud-Powered Torrenting, Simplified</title>
+  <meta name="description" content="Seedr.cc lets you add magnet links and torrent files to the cloud, then stream or download privately from your browser. Learn how it works, key benefits, FAQs, and best practices." />
+  <link rel="canonical" href="https://www.seedr.cc/" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Seedr.cc – Cloud-Powered Torrenting, Simplified" />
+  <meta property="og:description" content="Paste a magnet, let the cloud do the heavy lifting. Stream or download privately—no desktop client required." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://www.seedr.cc/" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Seedr.cc – Cloud-Powered Torrenting, Simplified" />
+  <meta name="twitter:description" content="Paste a magnet, let the cloud do the heavy lifting. Stream or download privately—no desktop client required." />
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --panel: #111218;
+      --muted: #9aa4b2;
+      --text: #eef1f5;
+      --brand: #68d391;   /* soft green */
+      --brand-2:#7aa7ff;  /* soft blue */
+      --ring: #2a2f3a;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --maxw: 1024px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f7f8fb;
+        --panel: #ffffff;
+        --muted: #556070;
+        --text: #0e1116;
+        --ring: #e6e9ef;
+        --shadow: 0 8px 24px rgba(12,22,34,.08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji"}
+    a{color:var(--brand-2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--maxw);margin-inline:auto;padding:24px}
+    header{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:saturate(1.2) blur(8px);
+      background:color-mix(in oklab, var(--bg) 86%, transparent);
+      border-bottom:1px solid var(--ring);
+    }
+    .nav{display:flex;align-items:center;gap:16px;justify-content:space-between}
+    .nav a.btn{padding:10px 14px;border:1px solid var(--ring);border-radius:12px;background:var(--panel);box-shadow:var(--shadow)}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .brand svg{width:26px;height:26px}
+    .hero{display:grid;gap:20px;grid-template-columns:1.1fr .9fr;align-items:center;padding:42px 0}
+    @media (max-width:880px){.hero{grid-template-columns:1fr}}
+    .hero h1{font-size:clamp(28px,5vw,48px);line-height:1.1;margin:0 0 10px}
+    .lead{color:var(--muted);font-size:clamp(16px,2.2vw,19px)}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .button{
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#06121a;font-weight:700;border:none;border-radius:14px;
+      padding:12px 16px;box-shadow:var(--shadow);cursor:pointer
+    }
+    .button.secondary{background:transparent;color:var(--text);border:1px solid var(--ring)}
+    .panel{background:var(--panel);border:1px solid var(--ring);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0e1620;color:#d7e1ee;border:1px solid #223040;padding:4px 8px;border-radius:8px}
+    .grid{display:grid;gap:18px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:880px){.grid-3,.grid-2{grid-template-columns:1fr}}
+    .card{padding:20px;border-radius:var(--radius);border:1px solid var(--ring);background:color-mix(in oklab, var(--panel) 92%, transparent)}
+    h2{font-size:clamp(22px,3.2vw,30px);margin:8px 0 12px}
+    h3{font-size:clamp(18px,2.6vw,22px);margin:10px 0}
+    ul{margin:0 0 0 18px;padding:0}
+    .table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--ring);border-radius:14px;overflow:hidden}
+    .table th,.table td{padding:14px 16px;border-bottom:1px solid var(--ring)}
+    .table th{background:color-mix(in oklab, var(--panel) 92%, transparent);text-align:left}
+    .table tr:last-child td{border-bottom:none}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid var(--ring);background:color-mix(in oklab, var(--panel) 90%, transparent);font-size:12px;color:var(--muted)}
+    .toc{padding:16px}
+    .toc a{display:block;padding:8px 10px;border-radius:10px}
+    .toc a:hover{background:color-mix(in oklab, var(--panel) 86%, transparent)}
+    details{border:1px solid var(--ring);border-radius:12px;padding:14px 16px;background:color-mix(in oklab, var(--panel) 94%, transparent)}
+    details+details{margin-top:10px}
+    footer{color:var(--muted);padding:40px 0}
+    .note{font-size:14px;color:var(--muted)}
+    .hero-visual{aspect-ratio:16/10;border-radius:16px;border:1px dashed var(--ring);display:grid;place-items:center;padding:16px}
+    .hero-visual p{color:var(--muted);margin:0}
+    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"TechArticle",
+    "headline":"Seedr.cc – Cloud-Powered Torrenting, Simplified",
+    "about":"Cloud torrenting, magnet links, streaming from the cloud",
+    "author":{"@type":"Person","name":"Your Name"},
+    "publisher":{"@type":"Organization","name":"Your Blog"},
+    "datePublished":"2025-08-16",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://www.seedr.cc/"}
+  }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand" aria-label="Site">
+        <!-- Simple cloud+bolt icon -->
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 14a5 5 0 0 1 3.4-4.73A6 6 0 0 1 20 10.5a3.5 3.5 0 0 1-.2 7H7a4 4 0 0 1-2-7.5Z" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12.5 11.5 10 16h3l-1.5 4 4-6h-3l1-2.5Z" fill="currentColor"/>
+        </svg>
+        <span>Cloud Torrenting Guide</span>
+      </div>
+      <nav style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#what" class="btn">What is Seedr?</a>
+        <a href="#features" class="btn">Features</a>
+        <a href="#how" class="btn">How it works</a>
+        <a href="#plans" class="btn">Plans</a>
+        <a href="#faq" class="btn">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="container hero">
+    <div>
+      <h1>Seedr.cc: Cloud-Powered Torrenting, Simplified</h1>
+      <p class="lead">
+        Paste a magnet link, let the cloud do the heavy lifting, then stream or download on any device—no desktop client, no upload ratios, no IP exposure to the swarm.
+      </p>
+      <div class="cta">
+        <a class="button" href="https://www.seedr.cc/" target="_blank" rel="noopener">Try Seedr.cc</a>
+        <a class="button secondary" href="#what">Learn more</a>
+      </div>
+      <p class="note" style="margin-top:10px">Always use legally obtained content and respect copyright laws in your country.</p>
+    </div>
+    <div class="hero-visual panel">
+      <p><span class="badge">Live Preview</span><br />This area can hold a screenshot of your Seedr dashboard.</p>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <section class="container panel">
+    <div class="grid grid-2">
+      <div class="toc">
+        <strong>On this page</strong>
+        <a href="#what">What is Seedr?</a>
+        <a href="#features">Key Features</a>
+        <a href="#how">How It Works</a>
+        <a href="#use-cases">Who Is It For?</a>
+        <a href="#plans">Plans Overview</a>
+        <a href="#best-practices">Best Practices</a>
+        <a href="#faq">FAQ</a>
+        <a href="#legal">Legal & Safety</a>
+      </div>
+      <div class="card">
+        <h3>Quick Take</h3>
+        <ul>
+          <li><span class="kbd">Magnet</span> → cloud fetch → stream or download.</li>
+          <li>Private by design—your IP isn’t exposed to peers.</li>
+          <li>Works in the browser on desktop & mobile.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- What is Seedr -->
+  <section id="what" class="container">
+    <h2>What is Seedr.cc?</h2>
+    <p>
+      <strong>Seedr.cc</strong> is a cloud torrenting service. Instead of running a BitTorrent client on your own device, you add a <em>magnet link</em> or upload a <em>.torrent</em> file to Seedr. Their servers fetch the content for you and store it in your private cloud space. From there, you can <strong>stream media in the browser</strong> or <strong>download files via HTTPS</strong>.
+    </p>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="container">
+    <h2>Key Features & Benefits</h2>
+    <div class="grid grid-3">
+      <article class="card">
+        <h3>No Install Required</h3>
+        <p>Everything runs in the browser—perfect for school or work machines, Chromebooks, and mobile devices.</p>
+      </article>
+      <article class="card">
+        <h3>Privacy-Friendlier</h3>
+        <p>The cloud fetches the torrent, so your device doesn’t join the peer swarm. You download over HTTPS from Seedr.</p>
+      </article>
+      <article class="card">
+        <h3>Stream Instantly</h3>
+        <p>Play supported video and audio formats directly in the web player—no waiting for full downloads.</p>
+      </article>
+      <article class="card">
+        <h3>Fast Fetch Speeds</h3>
+        <p>Seedr’s servers are optimized for high-speed fetching, often completing popular links in minutes.</p>
+      </article>
+      <article class="card">
+        <h3>Clean, Minimal UI</h3>
+        <p>Drag-and-drop, folder management, and a clutter-free interface make it beginner-friendly.</p>
+      </article>
+      <article class="card">
+        <h3>Flexible Plans</h3>
+        <p>Start free to try it out; upgrade for more storage, higher limits, and advanced access options.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how" class="container">
+    <h2>How It Works (Step-by-Step)</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <ol>
+          <li><strong>Copy a magnet link</strong> or download a <em>.torrent</em> file from a legitimate source.</li>
+          <li><strong>Add it to Seedr</strong> (paste magnet or upload .torrent).</li>
+          <li><strong>Wait for cloud fetching</strong> (usually fast for healthy torrents).</li>
+          <li><strong>Stream or download</strong> your files securely via HTTPS.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Tips</h3>
+        <ul>
+          <li>Prefer healthy torrents with many seeders for quicker fetches.</li>
+          <li>Keep your library organized with folders for easier streaming on TV apps.</li>
+          <li>Use subtitles (SRT/VTT) where supported for the best playback experience.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use cases -->
+  <section id="use-cases" class="container">
+    <h2>Who Is It For?</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Students & Travelers</h3>
+        <p>No admin rights? On the move? Use the browser to manage and stream without installing anything.</p>
+      </div>
+      <div class="card">
+        <h3>Low-Storage Devices</h3>
+        <p>Keep large files in the cloud and pull only what you need, when you need it.</p>
+      </div>
+      <div class="card">
+        <h3>Privacy-Conscious Users</h3>
+        <p>Reduce exposure to peer networks by letting the cloud handle P2P fetching.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plans -->
+  <section id="plans" class="container">
+    <h2>Plans Overview</h2>
+    <p class="note">The following is a general guide. Check <a href="https://www.seedr.cc/" target="_blank" rel="noopener">seedr.cc</a> for the latest details.</p>
+    <div class="panel" style="overflow:auto">
+      <table class="table" role="table" aria-label="Plan comparison">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">Free</th>
+            <th scope="col">Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cloud Storage</td>
+            <td>Limited starter space</td>
+            <td>Expanded (multiple tiers)</td>
+          </tr>
+          <tr>
+            <td>Fetch Speed & Limits</td>
+            <td>Basic</td>
+            <td>Higher limits & priority</td>
+          </tr>
+          <tr>
+            <td>Streaming Quality</td>
+            <td>Standard</td>
+            <td>Higher bitrates / resolutions</td>
+          </tr>
+          <tr>
+            <td>Access Options</td>
+            <td>Web app</td>
+            <td>Extras like WebDAV/FTP* (plan-dependent)</td>
+          </tr>
+          <tr>
+            <td>Support</td>
+            <td>Community / basic</td>
+            <td>Priority (plan-dependent)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">*Availability varies by plan and over time.</p>
+  </section>
+
+  <!-- Best Practices -->
+  <section id="best-practices" class="container">
+    <h2>Best Practices</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Organize for Streaming</h3>
+        <p>Use clear folder names and keep related files (e.g., movie + SRT subtitle) together for smoother playback.</p>
+      </div>
+      <div class="card">
+        <h3>Mind Your Quotas</h3>
+        <p>Cloud storage and daily fetch limits can apply. Delete finished items or archive them elsewhere to free space.</p>
+      </div>
+      <div class="card">
+        <h3>Prefer Legal Sources</h3>
+        <p>Only add content you have the right to access. Check the content’s license and your local laws.</p>
+      </div>
+      <div class="card">
+        <h3>Security Hygiene</h3>
+        <p>Enable two-factor authentication where available and use strong, unique passwords.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="container">
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary><strong>Is Seedr.cc legal?</strong></summary>
+      <p>Seedr.cc is a tool. Legality depends on what you use it for. Only fetch and download content you own or that’s freely licensed in your jurisdiction.</p>
+    </details>
+    <details>
+      <summary><strong>Do I need to install anything?</strong></summary>
+      <p>No desktop client is required. You use Seedr in the browser. Some access options for advanced workflows may require extra setup on premium plans.</p>
+    </details>
+    <details>
+      <summary><strong>Can I stream video directly?</strong></summary>
+      <p>Yes, for supported formats and within your plan’s limits. Otherwise, download the file for local playback.</p>
+    </details>
+    <details>
+      <summary><strong>Will my IP be visible to peers?</strong></summary>
+      <p>When Seedr fetches torrents, the cloud servers connect to peers—not your device. Your download from Seedr happens over HTTPS.</p>
+    </details>
+  </section>
+
+  <!-- Legal -->
+  <section id="legal" class="container panel">
+    <h2>Legal & Safety</h2>
+    <p>
+      This article is for informational purposes. Use Seedr.cc responsibly and comply with local laws and copyright regulations.
+      Avoid infringing content. When in doubt, don’t download or stream it.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <section class="container" aria-labelledby="cta-title">
+    <h2 id="cta-title">Ready to try Seedr.cc?</h2>
+    <p class="lead">Start with the free tier, then upgrade if you need more space or speed.</p>
+    <div class="cta">
+      <a class="button" href="https://www.seedr.cc/" target="_blank" rel="noopener" aria-label="Open Seedr.cc in a new tab">Open Seedr.cc</a>
+      <a class="button secondary" href="#top">Back to top</a>
+    </div>
+  </section>
+
+  <footer class="container">
+    <p>&copy; <span id="year"></span> Your Blog • Built with vanilla HTML &amp; CSS.</p>
+  </footer>
+
+  <script>
+    // Update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Smooth scroll for in-page links (progressive enhancement)
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>
